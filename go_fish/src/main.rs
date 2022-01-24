@@ -1,14 +1,32 @@
-use go_fish::card;
-use go_fish::card::Card;
+mod card;
+mod deck;
+mod player;
 
-use go_fish::deck;
+use deck::*;
+use player::*;
 
 fn main() {
     println!("Welcome to Go Fish!");
-    println!("Starting game...");
-    let card = Card::new(12, "pepe".to_string());
+    println!("Starting game...\n");
 
-    println!("{}", card);
+    let p1 = Player::new("Jake");
+    let p2 = Player::new("day1_degen");
 
-    let deck = deck::Deck::new();
+    println!("{}", p1);
+    println!("{}", p2);
+
+    let mut deck = Deck::new();
+    deck.init();
+    deck.shuffle();
+    println!("{}\n", deck);
+
+    match deck.draw() {
+        Some(card) => {
+            println!("Drawing card...");
+            println!("{}", card);
+        }
+        None => {
+            println!("The draw deck is empty. Cannot draw a card...");
+        }
+    };
 }

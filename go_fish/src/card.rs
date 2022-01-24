@@ -1,5 +1,6 @@
 use std::fmt;
 
+#[derive(Clone, Default)]
 pub struct Card {
     id: u8,
     name: String,
@@ -14,7 +15,7 @@ impl Card {
         self.id
     }
 
-    pub fn name(&self) -> &String {
+    pub fn name(&self) -> &str {
         &self.name
     }
 }
