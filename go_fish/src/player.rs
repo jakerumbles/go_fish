@@ -16,6 +16,20 @@ impl Player {
             cards: empty_hand,
         }
     }
+
+    pub fn cards(&mut self) -> &mut Deck {
+        &mut self.cards
+    }
+
+    /// Draw a card fromm the deck and place in players deck
+    pub fn draw_card(&mut self, deck: &mut Deck) {
+        match deck.draw() {
+            Some(card) => {
+                self.cards.add_to_deck(card);
+            }
+            None => println!("Cannot draw a card. The deck is empty"),
+        }
+    }
 }
 
 impl fmt::Display for Player {

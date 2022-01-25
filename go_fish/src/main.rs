@@ -9,8 +9,8 @@ fn main() {
     println!("Welcome to Go Fish!");
     println!("Starting game...\n");
 
-    let p1 = Player::new("Jake");
-    let p2 = Player::new("day1_degen");
+    let mut p1 = Player::new("Jake");
+    let mut p2 = Player::new("day1_degen");
 
     println!("{}", p1);
     println!("{}", p2);
@@ -20,13 +20,20 @@ fn main() {
     deck.shuffle();
     println!("{}\n", deck);
 
-    match deck.draw() {
-        Some(card) => {
-            println!("Drawing card...");
-            println!("{}", card);
-        }
-        None => {
-            println!("The draw deck is empty. Cannot draw a card...");
-        }
-    };
+    // Deal the cards
+    deck.deal_cards(&mut p1, &mut p2);
+    println!("{}", p1);
+    println!("{}", p2);
+
+    // Players are ready to begin game...
+
+    // match deck.draw() {
+    //     Some(card) => {
+    //         println!("Drawing card...");
+    //         println!("{}", card);
+    //     }
+    //     None => {
+    //         println!("The draw deck is empty. Cannot draw a card...");
+    //     }
+    // };
 }
